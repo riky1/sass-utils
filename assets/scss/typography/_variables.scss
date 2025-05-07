@@ -1,0 +1,59 @@
+// Variabili tipografiche (font-size, font-weight, etc.)
+
+// $font-family: 'Inter', sans-serif;
+// $font-family-heading: 'kanchenjunga', serif;
+
+$font-family-base: 'kanchenjunga', serif;
+
+$font-sizes: (
+  xs: (
+    base: 0.75rem,    //12px
+    md: 0.875rem      //14px
+  ),
+  sm: (
+    base: 0.875rem,   //14px
+    md: 1rem          //16px
+  ),
+  base: (
+    base: 1rem,       //16px
+    md: 1.125rem      //18px
+  ),
+  lg: (
+    base: 1.125rem,   //18px
+    md: 1.25rem       //20px
+  ),
+  xl: (
+    base: 1.25rem,    //20px
+    md: 1.5rem        //24px
+  ),
+  2xl: (
+    base: 1.5rem,     //24px
+    md: 1.75rem       //28px  
+  ),
+  3xl: (
+    base: 1.875rem,   //30px
+    md: 2rem          //32px
+  ),
+  4xl: (
+    base: 2.25rem,    //36px
+    md: 2.5rem        //40px
+  )
+);
+
+$line-heights: (
+  tight: 1.2,
+  normal: 1.5,
+  relaxed: 1.75
+);
+
+$font-weights: (
+  regular: 400,
+  medium: 500,
+  bold: 700
+);
+
+$letter-spacings: (
+  tight: -0.015rem,   // -0.25px
+  normal: 0rem,       // 0px
+  wide: 0.025rem      // 0.4px
+)

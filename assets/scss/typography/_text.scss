@@ -1,0 +1,33 @@
+// Classi utilitarie tipo .text--sm, .text--lg, ecc.
+
+@use './variables' as *;
+
+$sizes: (
+  xs: --font-size-xs,
+  sm: --font-size-sm,
+  base: --font-size-base,
+  lg: --font-size-lg,
+  xl: --font-size-xl,
+  2xl: --font-size-2xl,
+  3xl: --font-size-3xl
+);
+
+.txt {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+// Mixin per generare classi BEM-style
+@mixin generate-text-classes {  
+  @each $name, $var in $sizes {
+    .txt--#{$name} {
+      font-size: var(#{$var});
+    }
+  }
+}
+
+// Usa il mixin
+@include generate-text-classes;

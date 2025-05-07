@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use './breakpoints' as *;
+@use '../functions' as *;
+
+@mixin media-query($breakpoint, $type: min) {
+  $px-value: map.get($breakpoints, $breakpoint);
+
+  @if $px-value == null {
+    @error "❌ Breakpoint `#{$breakpoint}` non definito.";
+  }
+
+  $em-value: px-to-em($px-value);
+
+  @if $type == min {
+    @media only screen and (min-width: $em-value) {
+      @content;
+    }
+  } @else if $type == max {
+    @media only screen and (max-width: $em-value) {
+      @content;
+    }
+  } @else {
+    @error "❌ Tipo `#{$type}` non supportato. Usa `min` o `max`.";
+  }
+}

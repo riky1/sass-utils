@@ -1,0 +1,24 @@
+@use 'sass:math';
+
+/// Converte pixel in em
+/// @param {Number} $px - valore in pixel
+/// @param {Number} $base - base del font (default: 16px)
+@function px-to-em($px, $base: 16px) {
+  @if not math.unit($px) or math.unit($px) != 'px' {
+    @error "`#{$px}` deve essere un valore in pixel (es. 768px).";
+  }
+
+  @return math.div($px, $base) * 1em;
+}
+
+
+/// Converte pixel in rem
+/// @param {Number} $px - valore in pixel
+/// @param {Number} $base - base del font (default: 16px)
+@function px-to-em($px, $base: 16px) {
+  @if not math.unit($px) or math.unit($px) != 'px' {
+    @error "`#{$px}` deve essere un valore in pixel (es. 768px).";
+  }
+
+  @return math.div($px, $base) * 1rem;
+}

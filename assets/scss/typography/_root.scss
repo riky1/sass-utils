@@ -1,0 +1,40 @@
+// :root con custom properties (utilizzabile da JS anche)
+
+@use './variables' as *;
+@use '../mediaquery/media-query' as *;
+@use 'sass:map';
+
+:root {
+  /* Font Family */
+  --font-family-base: #{$font-family-base};
+
+  /* Font Sizes */
+  @each $name, $sizes in $font-sizes {
+    --font-size-#{$name}: #{map.get($sizes, base)};
+  }
+
+  /* Line Heights */
+  @each $name, $value in $line-heights {
+    --line-height-#{$name}: #{$value};
+  }
+
+  /* Font Weights */
+  @each $name, $weight in $font-weights {
+    --font-weight-#{$name}: #{$weight};
+  }
+
+  /* Letter spacings */
+  @each $name, $value in $letter-spacings {
+    --letter-spacing-#{$name}: #{$value};
+  }
+}
+
+@include media-query(md) {
+  :root {
+    @each $name, $sizes in $font-sizes {
+      @if map.has-key($sizes, md) {
+        --font-size-#{$name}: #{map.get($sizes, md)};
+      }
+    }
+  }
+}

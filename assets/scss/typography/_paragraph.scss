@@ -1,0 +1,18 @@
+// <p>, line-height, spaziatura
+
+@use './variables' as *;
+@use '../mediaquery/media-query' as *;
+@use 'sass:map';
+
+p {
+  font-family: var(--font-family-base);
+  font-size: map.get(map.get($font-sizes, base), base);
+  line-height: map.get($line-heights, normal);
+  margin-bottom: 1rem;
+}
+
+@include media-query(md) {
+  p {
+    font-size: map.get(map.get($font-sizes, base), md);
+  }
+}
