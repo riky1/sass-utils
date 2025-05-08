@@ -1,0 +1,30 @@
+/assets
+├── /scss
+│    │
+│    ├── layout/
+│    │   ├── _index.scss   
+│    │   └── _root.scss   // colors palette
+│    │
+│    ├── mediaquery/
+│    │   ├── _breakpoints.scss 
+│    │   └── _media-query.scss
+│    │
+│    ├── typography/
+│    │   ├── _fonts.scss
+│    │   ├── _headings.scss
+│    │   ├── _helpers.scss
+│    │   ├── _index.scss
+│    │   ├── _links.scss
+│    │   ├── _lists.scss
+│    │   ├── _paragraph.scss
+│    │   ├── _root.scss
+│    │   ├── _text.scss
+│    │   └── _variables.scss
+│    │  
+│    ├── _functions.scss
+│    └── main.scss
+│ 
+└── /public
+    └── fonts/
+        └── kanchenjunga/   
+            └── *.ttf   

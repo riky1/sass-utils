@@ -1,43 +1,117 @@
 # Sass Utilities
 
-Questo pacchetto contiene una serie di utility Sass progettate per semplificare lo sviluppo di progetti web. Attualmente, il pacchetto include moduli per la gestione della **tipografia** e delle **media query**.
+Sass utility toolkit for managing
 
-## Struttura del pacchetto
+- **typography**
+- **media queries** 
 
-### Typography
-Il modulo `typography` fornisce strumenti per gestire stili tipografici in modo scalabile e personalizzabile. Include:
+in modern front-end projects.
 
-- **Font Variables**: Variabili per definire font-family, font-size, line-height, font-weight, e letter-spacing ([`_variables.scss`](assets/scss/typography/_variables.scss)).
-- **Custom Properties**: Generazione di variabili CSS globali per la tipografia tramite il file [`_root.scss`](assets/scss/typography/_root.scss).
-- **Font Faces**: Definizione dei font-face per il font "Kanchenjunga" ([`_fonts.scss`](assets/scss/typography/_fonts.scss)).
-- **Headings**: Stili predefiniti per titoli `h1`, `h2`, `h3` ([`_headings.scss`](assets/scss/typography/_headings.scss)).
-- **Text Utilities**: Classi utilitarie per dimensioni del testo come `.txt--sm`, `.txt--lg`, ecc. ([`_text.scss`](assets/scss/typography/_text.scss)).
-- **Paragraphs**: Stili per paragrafi, inclusi line-height e spaziatura ([`_paragraph.scss`](assets/scss/typography/_paragraph.scss)).
-- **Aggregazione**: Il file [`_index.scss`](assets/scss/typography/_index.scss) aggrega tutti i moduli tipografici per un facile utilizzo.
+## ✨ Features
 
-### Media Query
-Il modulo `mediaquery` semplifica la gestione delle media query con mixin e variabili predefinite. Include:
+### 📐 **Typography** 
 
-- **Breakpoints**: Definizione di breakpoint comuni come `sm`, `md`, `lg`, ecc. ([`_breakpoints.scss`](assets/scss/mediaquery/_breakpoints.scss)).
-- **Mixin Media Query**: Mixin per creare media query flessibili con supporto per `min-width` e `max-width` ([`_media-query.scss`](assets/scss/mediaquery/_media-query.scss)).
+with custom font system, responsive scaling, and utility classes.
 
-## Come utilizzare
+- **Font Variables** ([`_variables.scss`](assets/scss/typography/_variables.scss)).
+- **Custom Properties**: [`_root.scss`](assets/scss/typography/_root.scss).
+- **Font Faces**: ([`_fonts.scss`](assets/scss/typography/_fonts.scss)).
+- **Headings**: `h1`, `h2`, `h3` ([`_headings.scss`](assets/scss/typography/_headings.scss)).
+- **Text Utilities**: `.txt--sm`, `.txt--lg`, etc. ([`_text.scss`](assets/scss/typography/_text.scss)).
+- **Paragraphs**: ([`_paragraph.scss`](assets/scss/typography/_paragraph.scss)).
+ 
 
-1. Importa il file principale `main.scss` nel tuo progetto:
-   ```scss
-   @use './assets/scss/main.scss' as *;
+### 📱 **Media Queries** 
 
-2. Usa le utility disponibili, ad esempio:
-- Per applicare stili tipografici:
-h1 {
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-4xl);
-}
+with named breakpoints and simple mixin usage
 
-- Per utilizzare una media query:
+- **Breakpoints**: `sm`, `md`, `lg`, etc. ([`_breakpoints.scss`](assets/scss/mediaquery/_breakpoints.scss)).
+- **Mixin Media Query**: `min-width`, `max-width` ([`_media-query.scss`](assets/scss/mediaquery/_media-query.scss)).
 
+## 📁 Project Structure
+```
+/assets
+├── /scss
+│   ├── layout/
+│   │   ├── _index.scss
+│   │   └── _root.scss // Root CSS variables (e.g., color palette)
+│   │
+│   ├── mediaquery/
+│   │   ├── _breakpoints.scss // Breakpoint definitions
+│   │   └── _media-query.scss // Mixin for media queries
+│   │
+│   ├── typography/
+│   │   ├── _fonts.scss // Font imports
+│   │   ├── _headings.scss // h1–h6 styles
+│   │   ├── _helpers.scss // [TODO]
+│   │   ├── _index.scss // Entry point for typography partials
+│   │   ├── _links.scss // [TODO]
+│   │   ├── _lists.scss // [TODO]
+│   │   ├── _paragraph.scss // Base <p> styles
+│   │   ├── _root.scss // CSS variables from typography maps
+│   │   ├── _text.scss // Utility classes like .txt--sm, .txt--lg
+│   │   └── _variables.scss // Maps for font sizes, weights, line heights
+│   │
+│   ├── _functions.scss // Utility functions (e.g., px to em)
+│   └── main.scss // Master file to import all partials
+│
+└── /public
+    └── fonts/
+        └── kanchenjunga/
+            └── *.ttf
+```
+
+## 🧠 Usage
+
+- Import `main.scss` in project:
+  ```scss
+  @use './assets/scss/main.scss' as *;
+  ```
+
+- Nuxt project (in `nuxt.config.ts`):
+  ```ts
+  export default defineNuxtConfig({
+    compatibilityDate: '2024-11-01',
+    devtools: { enabled: true },
+    css: ['@/assets/scss/main.scss'],
+    vite: {
+      css: {
+        preprocessorOptions: {
+          scss: {
+            additionalData: `@use "@/assets/scss/mediaquery/media-query" as *;`
+          }
+        }
+      }
+    }
+  })
+  ```
+
+### Media Query Example
+
+```scss
 @include media-query(md) {
-  body {
-    background-color: lightgray;
+  .example {
+    color: 1.25rem;
   }
 }
+```
+
+### Typography utility Example
+
+```html
+<h1>Heading 1</h1>
+<p>paragraph</p>
+<div class="text text-sm">some text</div>
+```
+
+## 🛠️ TODO
+
+### Typography
+- helpers.scss — generic helpers (e.g., visually-hidden, truncate)
+
+- links.scss — default styles and variants
+
+- lists.scss — normalize and style lists
+
+### Media Query
+- Support for "between" breakpoints (e.g., md → lg)
