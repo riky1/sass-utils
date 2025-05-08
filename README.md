@@ -4,6 +4,7 @@ Sass utility toolkit for managing
 
 - **typography**
 - **media queries** 
+- **color palette**
 
 in modern front-end projects.
 
@@ -64,27 +65,28 @@ with named breakpoints and simple mixin usage
 ## 🧠 Usage
 
 - Import `main.scss` in project:
-  ```scss
-  @use './assets/scss/main.scss' as *;
-  ```
+```scss
+@use './assets/scss/main.scss' as *;
+```
 
 - Nuxt project (in `nuxt.config.ts`):
-  ```ts
-  export default defineNuxtConfig({
-    compatibilityDate: '2024-11-01',
-    devtools: { enabled: true },
-    css: ['@/assets/scss/main.scss'],
-    vite: {
-      css: {
-        preprocessorOptions: {
-          scss: {
-            additionalData: `@use "@/assets/scss/mediaquery/media-query" as *;`
-          }
+
+```ts
+export default defineNuxtConfig({
+  compatibilityDate: '2024-11-01',
+  devtools: { enabled: true },
+  css: ['@/assets/scss/main.scss'],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/mediaquery/media-query" as *;`
         }
       }
     }
-  })
-  ```
+  }
+})
+```
 
 ### Media Query Example
 
@@ -123,3 +125,6 @@ with named breakpoints and simple mixin usage
 
 ### Media Query
 - Support for "between" breakpoints (e.g., md → lg)
+
+## 🧑‍💻 License
+MIT — Feel free to use
