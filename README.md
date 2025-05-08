@@ -94,6 +94,14 @@ with named breakpoints and simple mixin usage
     color: 1.25rem;
   }
 }
+// @media only screen and (min-width: 48em)
+
+@include media-query(md, max) {
+  .example {
+    color: 1.25rem;
+  }
+}
+// @media only screen and (max-width: 48em)
 ```
 
 ### Typography utility Example
